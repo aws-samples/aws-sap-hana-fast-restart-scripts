@@ -1,0 +1,14 @@
+[Unit]
+Description=SAP HANA TMPFS
+ConditionFileIsExecutable=/etc/rc.d/sap-hana-tmpfs.sh
+After=local-fs.target
+OnFailure=
+
+[Service]
+Type=forking
+ExecStart=/etc/rc.d/sap-hana-tmpfs.sh start
+ExecStop=/etc/rc.d/sap-hana-tmpfs.sh stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
